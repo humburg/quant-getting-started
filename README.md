@@ -9,10 +9,21 @@ relevant to the new audience.
 
 ## Modules
 
-### When to use Quantitative vs Qualitative methods?
+### Quantitative vs Qualitative methods
+
+What research questions are well suited to quantitative analysis and when may
+a qualitative appoeach be better?
 
 ### How to interpret quantitative results
 
+Introduction to common quantitative concepts aimed at facilitating reading,
+and understanding, quantitative research papers.
+
 ### Preparing data for quantitative analysis
 
+How should data be organised to enable quantitative research? Introduction
+to data handling and management techniques.
+
 ### Survey design
+
+Considerations when designing surveys for quantitative research.
