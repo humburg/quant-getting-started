@@ -1,7 +1,7 @@
 # Getting started with quantitative research
 
 This series of short workshops is aimed at qualitative researchers that have an
-interest in qualitative research but may not be quite sure where to start.
+interest in quantitavie research but may not be quite sure where to start.
 
 The content is currently targeted at Education researchers but can be adapted
 for use in other fields by replacing examples and discussion topics with ones

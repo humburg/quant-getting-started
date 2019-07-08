@@ -17,7 +17,7 @@ title: Introduction to quantitative research
 email: peter.humburg@mq.edu.au
 description: >- # this means to ignore newlines until "baseurl:"
   A series of short workshops aimed at qualitative researchers that have an
-  interest in qualitative research but may not be quite sure where to start.
+  interest in quantitative research but may not be quite sure where to start.
 baseurl: "/quant-getting-started" # the subpath of your site, e.g. /blog
 url: "https://humburg.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  humburg
