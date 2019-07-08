@@ -1,5 +1,5 @@
 ---
-title: Quantitative vs Qualitative methods
+title: Quantitative vs Qualitative Research Methods
 ---
 
 What research questions are well suited to quantitative analysis and when may
