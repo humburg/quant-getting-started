@@ -6,6 +6,8 @@ What research questions are well suited to quantitative analysis and when will
 a qualitative appoach be better?
 <!--more-->
 
+## Introduction
+
 Before getting started with quantitative research it is importent to understand
 which questions it can answer. Both Quantitative and qualitative research offer
 powerful methods to deliver new insights. They do, however, excel at different
@@ -25,3 +27,13 @@ things and it is important to use the right tool for the problem at hand.
 > and qualitative reseach collections. What do questions in each group have
 > in common? What are the differences between the groups?
 {:.discussion}
+
+### Strengths of Qualitative Methods
+
+### What can Quantitative Methods add to this
+
+## Quantitative Methods need Quantitative Data
+
+### What distinguishes Quantitative Data
+
+## Combining Quantitative and Qualitative Methods
