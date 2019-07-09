@@ -1,3 +1,48 @@
 /* start custom scss snippet */
+@mixin icon($id, $weight) {
+    &::before {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Font Awesome 5 Free";
+        padding-right: map-get($spacers, 1);
+        font-weight: $weight;
+        content: $id;
+    }
+}
 
+@mixin activity-header($icon: none, $icon-weight: 400) {
+    @include split-line(bottom, default, $main-color-2);
+    @if $icon != none {
+        @include icon($icon, $icon-weight);
+    }
+    margin-top: map-get($spacers, 2);
+    margin-bottom: map-get($spacers, 2);
+    font-size: small;
+    font-weight: bold;
+}
+
+@mixin activity($icon: none, $icon-width: 400) {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    background-color: rgba($main-color-3, 0.6);
+    border: 1px solid $main-color-3;
+    border-radius: map-get($base, border-radius);
+    color: $text-color-3;
+    box-shadow: 2px 2px 2px $border-color;
+    .title {
+        @include activity-header($icon, $icon-width);
+    }
+}
+
+.article__content {
+    .exercise {
+        @include activity("\f303", 900);
+    }
+
+    .discussion {
+        @include activity("\f086");
+    }
+}
 /* end custom scss snippet */
