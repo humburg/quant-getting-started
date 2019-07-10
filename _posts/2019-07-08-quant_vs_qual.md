@@ -1,5 +1,9 @@
 ---
 title: Quantitative vs Qualitative Methods
+sidebar:
+  nav: modules
+aside:
+  toc: true
 ---
 
 What research questions are well suited to quantitative analysis and when will

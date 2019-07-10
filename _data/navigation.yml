@@ -15,3 +15,9 @@ header:
       ko      : &KO       소개
       ko-KR   : *KO
     url: /about.html
+modules:
+  - title: Qual vs. Quant
+    children:
+      - title: Notes
+        url: /2019/07/08/quant_vs_qual.html
+      - title: Slides

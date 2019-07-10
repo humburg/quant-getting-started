@@ -41,6 +41,24 @@
     font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
+.page__sidebar {
+    background-color: $main-color-1;
+    .sidebar-toc {
+        @include title-font;
+        ul.toc--navigator {
+            .toc-h1 {
+                color: $text-color-1;
+            }
+            .toc-h2 {
+                color: $text-color-l;
+            }
+            .toc-h2.active a {
+                color: $text-color-1;
+            }
+        }
+    }
+}
+
 .page__main {
     header,h1,h2,h3,h4,h5,h6 {
         @include title-font;
