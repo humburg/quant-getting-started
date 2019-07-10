@@ -22,6 +22,7 @@
     margin-bottom: map-get($spacers, 2);
     font-size: small;
     font-weight: bold;
+    @include title-font;
 }
 
 @mixin activity($icon: none, $icon-width: 400) {
@@ -36,6 +37,15 @@
     }
 }
 
+@mixin title-font {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.page__main {
+    header,h1,h2,h3,h4,h5,h6 {
+        @include title-font;
+    }
+}
 .article__content {
     .exercise {
         @include activity("\f303", 900);
