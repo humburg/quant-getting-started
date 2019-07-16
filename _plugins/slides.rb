@@ -87,6 +87,7 @@ module Jekyll
 
     def render(context)
       if !context.environments.first["page"] || !context.environments.first["page"]["slides"]
+        puts context.environments.first.inspect
         # only if slides
         return "{% #{(@tag_name.to_s + ' ' + @text.to_s).strip} %}"
       end
@@ -155,24 +156,6 @@ module Jekyll
     end
   end
 
-  class Site
-    # Render the site to the destination.
-    #
-    # Returns nothing.
-    def render_slides
-      payload = site_payload
-      self.posts.docs.each do |post|
-        post.render_slides(self.layouts, payload)
-      end
-
-      #self.pages.each do |page|
-      #  page.render_slides(self.layouts, payload)
-      #end
-    rescue Errno::ENOENT => e
-      # ignore missing layout dir
-    end
-  end
-
   class Page
     def transform
       super
@@ -191,49 +174,52 @@ module Jekyll
     end
   end
 
-  class SlidePost < DelegateClass(Post)
-    def initialize(page)
-      super(page)
-      self.data["layout"] = "slides"
-      @source_dir = page.site.source
-      @slides_html = "#{page.site.config['slides_folder'] || 'slides'}/index.html"
-    end
-
-    def slide_destination(page)
-      page_path = destination(page)
-      page_path.sub('index.html', @slides_html)
+  class SlidePost < Page
+    def initialize(site, base, output)
+      @source_dir = site.source
+      @slide_base = base.gsub('posts', 'slides')
+      @slides_path = File.join(@source_dir, @slide_base, output)
+      @name = output
+      @notes = output != "index.html"
+      self.write(@slides_path)
+      super(site, @source_dir, @slide_base, @name)
+      puts "initialising output for " + @slides_path
     end
 
     def write(dest)
-      path = slide_destination(dest)
-      FileUtils.mkdir_p(File.dirname(path))
-      File.open(path, 'w') do |f|
-        f.write(self.output)
-      end
+      FileUtils.mkdir_p(File.dirname(dest))
+      puts "slide output: " + File.dirname(dest)
 
-      # speaker notes
-      path = path.sub('index.html', 'notes.html')
-      FileUtils.mkdir_p(File.dirname(path))
-      File.open(path, 'w') do |f|
-        file = File.join(@source_dir, 'assets', 'slides', 'notes.html')
-        f.write(File.read(file))
+      if @notes
+        File.open(dest, 'w') do |f|
+          file = File.join(@source_dir, 'assets', 'slides', 'notes.html')
+          f.write(File.read(file))
+        end
+      else
+        File.open(dest, 'w') do |f|
+          f.write(self.output)
+        end
       end
+    end
+
+    def path
+      @slides_path
+    end
+
+    def collection
+      "slides"
     end
   end
 
-  class Site
-    alias _slide_orig_write write
-    def write
-      _slide_orig_write
+  class SlideGenerator < Jekyll::Generator
+    safe true
 
-      self.posts.docs.each do |page|
-        puts page.class
-        puts page.class.ancestors
-        if page.data["slides"]
-          slides = SlidePost.new(page)
-          # slides.render(self.layouts, site_payload)
-          Jekyll::Renderer.new(self, self, site_payload)
-          slides.write(self.dest)
+    def generate(site)
+      site.posts.docs.each do |post|
+        if post.content.include? "{% slide"
+          base_dir = File.join(File.dirname(post.relative_path), File.basename(post.relative_path, '.md'))
+          site.documents << SlidePost.new(site, base_dir, "index.html")
+          site.documents << SlidePost.new(site, base_dir, "notes.html")
         end
       end
     end
