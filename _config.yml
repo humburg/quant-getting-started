@@ -67,6 +67,10 @@ paths:
   archive : # "/archive.html" (default)
   rss     : # "/feed.xml" (default)
 
+## => Collections
+##############################
+collections:
+  - slides
 
 ## => Post
 ##############################
