@@ -30,9 +30,6 @@
 	</div>
 
 	<script src="{{ root_url }}/assets/slides/js/reveal.js"></script>
-  <script src="{{ root_url }}/assets/slides/js/notes.js"></script>
-  <script src="{{ root_url }}/assets/slides/plugin/markdown/marked.js"></script>
-  <script src="{{ root_url }}/assets/slides/plugin/markdown/markdown.js"></script>
 
 	<script>
 
@@ -40,7 +37,24 @@
 		// https://github.com/hakimel/reveal.js#configuration
 		Reveal.initialize({
 		  history: true,
-		  center: false
+      center: false,
+      dependencies: [
+        // Interpret Markdown in <section> elements
+        { src: '{{ root_url }}/assets/slides/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: '{{ root_url }}/assets/slides/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: '{{ root_url }}/assets/slides/plugin/highlight/highlight.js', async: true },
+
+        // Zoom in and out with Alt+click
+        { src: '{{ root_url }}/assets/slides/plugin/zoom-js/zoom.js', async: true },
+
+        // Speaker notes
+        { src: '{{ root_url }}/assets/slides/plugin/notes/notes.js', async: true },
+
+        // MathJax
+        { src: '{{ root_url }}/assets/slides/plugin/math/math.js', async: true }
+      ]
 		});
 
 	</script>
