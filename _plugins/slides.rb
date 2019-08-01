@@ -92,6 +92,9 @@ module Jekyll
           frontmatter['description'] = post.data["excerpt"].to_s
           slide_content = self.extract_slides(parts[1])
 
+          # Convert class tags
+          slide_content.gsub!(/\{:\s*\.([^} ]+)\s*\}/, '<!-- .element: class="\\1" -->')
+
           # write new markdown file
           slides = File.open(self.slide_path(post), 'w')
           slides.puts(frontmatter.to_yaml)
