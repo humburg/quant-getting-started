@@ -74,6 +74,23 @@ module Jekyll
     end
   end
 
+  # Create speaker notes
+  class Notes < Liquid::Block
+    def render(context)
+      slide_mode = false
+      if( !context.registers[:page]['mode'].nil? && context.registers[:page]['mode'] == "slides" )
+        slide_mode = true
+      end
+
+      output = ""
+      if( slide_mode )
+        output = "Notes:\n"
+      end
+      output += super
+      return output
+    end
+  end
+
   # Generate slide markdown from posts
   class SlideGenerator < Jekyll::Generator
     safe true
@@ -148,3 +165,4 @@ module Jekyll
 end
 
 Liquid::Template.register_tag("slide", Jekyll::Slide)
+Liquid::Template.register_tag("notes", Jekyll::Notes)
