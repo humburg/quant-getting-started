@@ -1,5 +1,5 @@
 {% slide slideonly %}
-<!-- .slide: class="title-slide" -->
+<!-- .slide: class="title-slide center" -->
 
 # {{ page.title }}
 <!-- .element: class="main-title" -->
