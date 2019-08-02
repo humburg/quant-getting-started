@@ -108,6 +108,7 @@ module Jekyll
           frontmatter = self.slide_frontmatter(frontmatter)
           frontmatter['description'] = post.data["excerpt"].to_s
           slide_content = self.extract_slides(parts[1])
+          slide_content = self.fix_notes(slide_content)
 
           # Convert class tags
           slide_content.gsub!(/\{:\s*\.([^} ]+)\s*\}/, '<!-- .element: class="\\1" -->')
@@ -156,6 +157,11 @@ module Jekyll
       content.gsub!(/({%\s+endslide\s+%}).*?({%\s+slide\s+.*?%})/m, "\\1\n\\2")
       content.sub!(/(.*{%\s+endslide\s+%}\r?\n?).*?\z/m, "\\1")
       return content
+    end
+
+    # ensure speaker notes are at end of slide content
+    def fix_notes(content)
+      return content.gsub(/({%\s+slide\s.*?%}.*?)({%\s+notes\s.*?%}.*?{%\s+endnotes\s+%})(.*?)({%\s+endslide\s+%})/m, "\\1\\3\\2\\4")
     end
 
     def slide_path(post)
