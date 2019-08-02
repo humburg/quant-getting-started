@@ -95,6 +95,10 @@ module Jekyll
           # Convert class tags
           slide_content.gsub!(/\{:\s*\.([^} ]+)\s*\}/, '<!-- .element: class="\\1" -->')
 
+          # Add title slide
+          title_slide = File.read('_includes/slides/title/title.md')
+          slide_content = title_slide + slide_content
+
           # write new markdown file
           slides = File.open(self.slide_path(post), 'w')
           slides.puts(frontmatter.to_yaml)
