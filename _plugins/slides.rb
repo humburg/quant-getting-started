@@ -4,10 +4,16 @@
 #
 # Relies on reveal.js to create slides.
 #
-# New Liquid tags: {% slide %}, {% note %}
-#       supported tag options:
+# New Liquid tags: {% slide %}, {% slideonly %} {% note %}
+#       All content that should be placed on slides has to wrapped in
+#       a {% slide %} block. By default the slide content will also
+#       be displayed on the blog. To restrict display to slides, either
+#       use the 'slideonly' option for the slide or place parts of it into
+#       a {% slideonly %} block.
+#
+#       supported tag options for {% slide %}:
 #             - slideonly: suppress content in blog output
-#             - reveal: Has of the form {"option":"value"} providing
+#             - reveal: Should be of the form {"option":"value"} providing
 #                       reveal data attributes.
 
 require 'json'
@@ -69,6 +75,22 @@ module Jekyll
         else
           output = super
         end
+      end
+      return output
+    end
+  end
+
+  # Blocks only visible on slides
+  class SlideOnly < Liquid::Block
+    def render(context)
+      slide_mode = false
+      if( !context.registers[:page]['mode'].nil? && context.registers[:page]['mode'] == "slides" )
+        slide_mode = true
+      end
+
+      output = ""
+      if( slide_mode )
+        output = super
       end
       return output
     end
@@ -172,3 +194,4 @@ end
 
 Liquid::Template.register_tag("slide", Jekyll::Slide)
 Liquid::Template.register_tag("notes", Jekyll::Notes)
+Liquid::Template.register_tag("slideonly", Jekyll::SlideOnly)
