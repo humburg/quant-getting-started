@@ -1,0 +1,3 @@
+[submodule "assets/slides"]
+	path = assets/slides
+	url = https://github.com/humburg/reveal.js.git

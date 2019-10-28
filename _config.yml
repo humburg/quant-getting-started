@@ -67,6 +67,11 @@ paths:
   archive : # "/archive.html" (default)
   rss     : # "/feed.xml" (default)
 
+## => Collections
+##############################
+collections:
+  slides:
+    output: true
 
 ## => Post
 ##############################
@@ -200,6 +205,8 @@ exclude:
   - /screenshots
   - /test
   - /vendor
+  - /bkp
+  - /assets/slides/node_modules
 
 defaults:
   - scope:
@@ -215,6 +222,14 @@ defaults:
       show_subscribe: false
       pageview: true
       show_date: false
+      mode: both
+  - scope:
+      path: ""
+      type: slides
+    values:
+      layout: slides
+      mode: slide
+
 
 ## => Plugins
 ##############################
