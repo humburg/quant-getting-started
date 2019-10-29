@@ -125,12 +125,16 @@ Ensuring data are actually collected in a way that allows objective measurement 
 {% endnotes %}
 {% endslide %}
 
-{% slide %}
-
 ### Quantitative Methods need Quantitative Data
 
+{% slide %}
 {% slideonly %}
-Quantitative methods require numerical data. These could be
+
+### Quantitative Data
+
+Quantitative methods require numerical data.
+
+These could be
 
 * Counts
 * Measurement of a quantity of interest
@@ -149,6 +153,15 @@ These data can then be used to make comparisons that help to answer more complex
 {% slide %}
 
 ## Combining Quantitative and Qualitative Methods
+
+{% endslide %}
+
+{% slide %}
+
+> Combining Quantitative and Qualitative Methods
+> {:.title}
+> How could you combine quantitative and qualitative analyses from the same study?
+{:.discussion}
 
 {% endslide %}
 
@@ -193,10 +206,29 @@ Some qualitative data can be turned into quantitative data through careful codin
 
 ### Combining Qualitative and Quantitative Analyses
 
+{% slideonly %}
+
+* Combine the strengths of quantitative and qualitative analyses.
+* Use qualitative analyses to generate hypothesis, test them with a quantitative study.
+* Use quantitative analyses to identify differences of interest, follow-up with qualitative study to understand the cause.
+
+{% endslideonly %}
+
 {% notes %}
 
 Not all qualitative data is easily structured into a format suitable for use in a quantitative analysis but both types of analysis can complement each other. For example, a qualitative analysis can generate specific hypotheses that can then be tested with quantitative analyses. Alternatively, the analysis of quantitative data may establish differences between groups or over time, that could then be followed up through interviews with participants to gain insight into the reasons underlying the observed differences.
 
 {% endnotes %}
+
+{% endslide %}
+
+{% slide %}
+
+> Combining Qualitative and Quantitative Analyses
+> {:.title}
+> Take the two sticky notes from earlier (or come up with a new pair of quantitative and qualitative research questions).
+>
+> How would you design a study that aims to address both questions?
+{:.exercise}
 
 {% endslide %}
