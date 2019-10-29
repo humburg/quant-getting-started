@@ -1,4 +1,4 @@
-# Getting started with quantitative research
+# Getting started with quantitative research [![Build Status](https://travis-ci.com/humburg/quant-getting-started.svg?branch=master)](https://travis-ci.com/humburg/quant-getting-started)
 
 This series of short workshops is aimed at qualitative researchers that have an
 interest in quantitavie research but may not be quite sure where to start.
