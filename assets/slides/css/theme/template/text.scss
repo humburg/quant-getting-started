@@ -1,0 +1,98 @@
+// Styles derived from Jekyll TeXt theme for consistent appearance
+$base: (
+  font-family:            ("Quincy CF", Georgia, serif),
+  font-family-code:       (Menlo, Monaco, Consolas, Andale Mono, lucida console, Courier New, monospace),
+
+  font-size-root:         16px,
+  font-size-root-sm:      14px,
+
+  font-size-xl:           1.5rem,
+  font-size-lg:           1.25rem,
+  font-size:              1rem,
+  font-size-sm:           .85rem,
+  font-size-xs:           .7rem,
+
+  font-size-h1-xl:        3.5rem,
+  font-size-h2-xl:        2.5rem,
+  font-size-h3-xl:        2rem,
+  font-size-h4-xl:        1.75rem,
+  font-size-h5-xl:        1.5rem,
+  font-size-h6-xl:        1.5rem,
+
+  font-size-h1-lg:        3rem,
+  font-size-h2-lg:        2rem,
+  font-size-h3-lg:        1.75rem,
+  font-size-h4-lg:        1.5rem,
+  font-size-h5-lg:        1.25rem,
+  font-size-h6-lg:        1.25rem,
+
+  font-size-h1:           2.5rem,
+  font-size-h2:           1.9rem,
+  font-size-h3:           1.5rem,
+  font-size-h4:           1.2rem,
+  font-size-h5:           1rem,
+  font-size-h6:           1rem,
+
+  font-size-h1-sm:        2rem,
+  font-size-h2-sm:        1.5rem,
+  font-size-h3-sm:        1.35rem,
+  font-size-h4-sm:        1.15rem,
+  font-size-h5-sm:        1rem,
+  font-size-h6-sm:        1rem,
+
+  font-size-h1-xs:        1.05rem,
+  font-size-h2-xs:        1rem,
+  font-size-h3-xs:        .95rem,
+  font-size-h4-xs:        .9rem,
+  font-size-h5-xs:        .85rem,
+  font-size-h6-xs:        .85rem,
+
+  font-weight:            400,
+  font-weight-bold:       700,
+
+  line-height-xl:         2,
+  line-height-lg:         1.8,
+  line-height:            1.6,
+  line-height-sm:         1.4,
+  line-height-xs:         1.2,
+
+  spacer:                 1rem,
+
+  border-radius-lg:       .8rem,
+  border-radius:          .4rem,
+  border-radius-sm:       .2rem
+);
+
+$spacers: (
+  0:                      0,
+  1:                      map-get($base, spacer) * .25,
+  2:                      map-get($base, spacer) * .5,
+  3:                      map-get($base, spacer),
+  4:                      map-get($base, spacer) * 1.5,
+  5:                      map-get($base, spacer) * 3
+);
+
+@mixin split-line($direction: default, $width: default, $color: default) {
+  @if $direction == default {
+    $direction: top;
+  }
+  @if $color == default {
+    $color: $border-color-l;
+  }
+  @if $width == default {
+    $width: 1px;
+  }
+  border: 0 solid $color;
+  @if $direction == top {
+    border-top-width: $width;
+  }
+  @if $direction == right {
+    border-right-width: $width;
+  }
+  @if $direction == bottom {
+    border-bottom-width: $width;
+  }
+  @if $direction == left {
+    border-left-width: $width;
+  }
+}

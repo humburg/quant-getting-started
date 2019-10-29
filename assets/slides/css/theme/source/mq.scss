@@ -1,0 +1,120 @@
+/**
+ * A theme for reveal.js presentations using Macquarie University colors,
+ * based on the simple theme by Owen Versteeg.
+ *
+ * This theme is Copyright (C) 2019 Peter Humburg. It is MIT licensed.
+ * Simple theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Import extra Scss from Jekyll's TeXt theme
+@import "../template/text";
+
+// Include theme-specific fonts
+@import url(https://use.fontawesome.com/releases/v5.0.13/css/all.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Lato', sans-serif;
+$mainColor: #373A36;
+$headingFont: "Segoe UI", Helvetica, Arial, sans-serif;
+$headingColor: #A6192E;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #fff;
+$linkColor: #D6001C;
+$linkColorHover: #A6192E;
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+$highlightColor: #D6001C;
+$calloutColor: #D6D2C4;
+$calloutTextColor: #373A36;
+$borderColor:     mix(#000, $backgroundColor, 20%);
+
+$activityHeadingSize: $heading4Size;
+$mainTitleSize: 1.25 * $heading2Size;
+$mainTitleBackground: $calloutColor;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+
+
+// Custom SCSS
+@mixin title-font {
+    font-family: $headingFont;
+}
+@mixin icon($id, $weight) {
+    &::before {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        font-size: $activityHeadingSize;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-family: "Font Awesome 5 Free";
+        padding-right: map-get($spacers, 1);
+        font-weight: $weight;
+        content: $id;
+    }
+}
+@mixin activity-header($icon: none, $icon-weight: 400) {
+    @include split-line(bottom, default, $highlightColor);
+    @if $icon != none {
+        @include icon($icon, $icon-weight);
+    }
+    margin-top: map-get($spacers, 2);
+    margin-bottom: map-get($spacers, 2);
+    font-size: $activityHeadingSize;
+    font-weight: bold;
+    @include title-font;
+}
+@mixin activity($icon: none, $icon-weight: 400) {
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    background-color: rgba($calloutColor, 0.6);
+    border: 1px solid $calloutColor;
+    border-radius: map-get($base, border-radius);
+    color: $calloutTextColor;
+    box-shadow: 2px 2px 2px $borderColor;
+    font-style: normal;
+    font-size: 30px;
+    width: 90%;
+    .title {
+        @include activity-header($icon, $icon-weight);
+    }
+}
+
+.reveal {
+    .discussion {
+        @include activity("\f086");
+    }
+    .exercise {
+        @include activity("\f303", 900);
+    }
+    .title-slide {
+        background-color: $mainTitleBackground;
+        .main-title {
+            font-size: $mainTitleSize;
+            text-shadow: 2px 2px 4px mix(#000, $mainTitleBackground, 20%);
+        }
+        .author {
+            padding-top: map-get($spacers, 5);
+        }
+    }
+    .controls button {
+        color: $highlightColor;
+    }
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
